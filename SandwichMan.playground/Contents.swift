@@ -11,15 +11,89 @@ let veggies    = [ "lettuce", "onion", "cucumber", "sprouts", "carrot" ]
 let fruits     = [ "tomato" ]
 let condiments = [ "mayo", "mustard", "relish", "pickles", "ketchup" ]
 
-
 // == Question 1 ===============
 // A sandwich must contain at least 1 ingredient. Write a function called `hasAtLeastOneIngredient` that accepts an array of ingredients as an argument, and returns a boolean. If one or more ingredients are present, it should return true
 //  i.e. An input of [ 'chicken', 'mustard', 'pickles'] would return true
+let chickenSandwich = ["chicken", "mustard", "pickles"]
+
+func hasAtLeastOneIngredient(_ ingredients:[String]) -> Bool {
+  var hasOneIngredient = false
+  
+  if (hasOneIngredient == false) && (checkForProtein(ingredients) == true) {
+    hasOneIngredient = true
+  }
+  
+  if (hasOneIngredient == false) && (checkForVeggies(ingredients) == true) {
+    hasOneIngredient = true
+  }
+  
+  if (hasOneIngredient == false) && (checkForFruits(ingredients) == true) {
+    hasOneIngredient = true
+  }
+  
+  if (hasOneIngredient == false) && (checkForCondiments(ingredients) == true) {
+    hasOneIngredient = true
+  }
+  return hasOneIngredient
+}
+
+func checkForProtein(_ ingredients:[String]) -> Bool {
+  var hasProtein:Bool = false
+  for ingredient in ingredients {
+    if proteins.contains(ingredient) {
+      hasProtein = true
+    }
+  }
+  return hasProtein
+}
+
+func checkForVeggies(_ ingredients:[String]) -> Bool {
+  var hasVeggie:Bool = false
+  for ingredient in ingredients {
+    if veggies.contains(ingredient) {
+      hasVeggie = true
+    }
+  }
+  return hasVeggie
+}
+
+func checkForFruits(_ ingredients:[String]) -> Bool {
+  var hasFruit:Bool = false
+  for ingredient in ingredients {
+    if fruits.contains(ingredient) {
+      hasFruit = true
+    }
+  }
+  return hasFruit
+}
+
+func checkForCondiments(_ ingredients:[String]) -> Bool {
+  var hasCondiment:Bool = false
+  for ingredient in ingredients {
+    if condiments.contains(ingredient) {
+      hasCondiment = true
+    }
+  }
+  return hasCondiment
+}
+
+
+hasAtLeastOneIngredient(chickenSandwich)
+checkForProtein(chickenSandwich)
+checkForVeggies(chickenSandwich)
+checkForFruits(chickenSandwich)
+checkForCondiments(chickenSandwich)
 
 
 // == Question 2 ===============
 // A sandwich can only contain ingredients on the menu; if a sandwich contains an ingredient not on the menu, it should be removed. Write a function called `validateSandwich` that accepts an array of ingredients as an argument and returns only the valid ingredients as an array
 //  i.e. An input of [ 'chicken', 'hammer', 36, 'swiss cheese' ] would return [ 'chicken' ]
+
+func validateSandwich(_ ingredients: [String]) -> [String] {
+  
+  return ["blob"]
+}
+
 
 
 // == Question 3 ===============
