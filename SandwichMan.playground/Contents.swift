@@ -19,7 +19,7 @@ let chickenSandwich = ["chicken", "mustard", "pickles"]
 func hasAtLeastOneIngredient(_ ingredients:[String]) -> Bool {
   var hasOneIngredient = false
   
-  if (hasOneIngredient == false) && (checkForProtein(ingredients) == true) {
+  if (hasOneIngredient == false) && (checkForProteins(ingredients) == true) {
     hasOneIngredient = true
   }
   
@@ -37,7 +37,7 @@ func hasAtLeastOneIngredient(_ ingredients:[String]) -> Bool {
   return hasOneIngredient
 }
 
-func checkForProtein(_ ingredients:[String]) -> Bool {
+func checkForProteins(_ ingredients:[String]) -> Bool {
   var hasProtein:Bool = false
   for ingredient in ingredients {
     if proteins.contains(ingredient) {
@@ -77,12 +77,11 @@ func checkForCondiments(_ ingredients:[String]) -> Bool {
   return hasCondiment
 }
 
-
 hasAtLeastOneIngredient(chickenSandwich)
-checkForProtein(chickenSandwich)
-checkForVeggies(chickenSandwich)
-checkForFruits(chickenSandwich)
-checkForCondiments(chickenSandwich)
+//checkForProteins(chickenSandwich)
+//checkForVeggies(chickenSandwich)
+//checkForFruits(chickenSandwich)
+//checkForCondiments(chickenSandwich)
 
 
 // == Question 2 ===============
@@ -90,6 +89,17 @@ checkForCondiments(chickenSandwich)
 //  i.e. An input of [ 'chicken', 'hammer', 36, 'swiss cheese' ] would return [ 'chicken' ]
 
 func validateSandwich(_ ingredients: [String]) -> [String] {
+  
+
+  for ingredient in ingredients {
+    
+    if !proteins.contains(ingredient) {
+      //remove that item
+    }
+    
+    
+    
+  }
   
   return ["blob"]
 }
@@ -113,3 +123,8 @@ func validateSandwich(_ ingredients: [String]) -> [String] {
 
 // == Bonus ====================
 // You forgot to name your sandwich shop. What’s it called? Print this in the console as a string.
+let sandwichShopName = "Grease and Gruyere"
+func shopName(_ name: String){
+  print(name)
+}
+shopName(sandwichShopName)
