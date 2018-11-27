@@ -171,7 +171,8 @@ func howMuchDoesSandwichCost(proteinsCount: Int, fruitsAndVeggiesCount: Int, con
     extraCondimentsCount = (Double(condimentsCount) - 2) * kExtraIngredientCost
   }
   
-  totalSandwichCost = kSandwichCost + extraProteinCost + extraFruitsAndVeggiesCost + extraCondimentsCount
+  totalSandwichCost = ((kSandwichCost + extraProteinCost + extraFruitsAndVeggiesCost + extraCondimentsCount) * 100).rounded() / 100
+  
   return totalSandwichCost
 }
 
@@ -207,7 +208,8 @@ func howMuchDoesSandwichCostWithIncrease(proteinsCount: Int, fruitsAndVeggiesCou
     extraCondimentsCount = (Double(condimentsCount) - 2) * kExtraCondimentsCost
   }
   
-  totalSandwichCost = kSandwichCost + extraProteinCost + extraFruitsAndVeggiesCost + extraCondimentsCount
+  totalSandwichCost = ((kSandwichCost + extraProteinCost + extraFruitsAndVeggiesCost + extraCondimentsCount) * 100).rounded() / 100
+  
   return totalSandwichCost
 }
 
