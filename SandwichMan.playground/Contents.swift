@@ -153,10 +153,6 @@ checkForExtraIngredients(questionThreeSecondSandwichOrder) // returns 2
 // Write a function that calculates the cost of a sandwich, based on the number of ingredients it contains. The function accepts 3 integers as arguments (proteinsCount, fruitsAndVeggiesCount, and condimentsCount) and returns the total cost of the sandwich as a double rounded to 2 decimal places.
 //  i.e. An input of 1 (protein), 3 (fruits/veggies) and 4 (condiments) would return 13.00
 
-//  * A standard sandwich will cost $12 (…you're located in Gastown)
-//  * A standard sandwich has up to 1 protein, up to 3 fruits or veggies, and up to 2 condiments
-//  * For each extra ingredient, there is an additional charge of $0.50
-
 func howMuchDoesSandwichCost(proteinsCount: Int, fruitsAndVeggiesCount: Int, condimentsCount: Int) -> Double {
   let kSandwichCost: Double = 12.00
   let kExtraIngredientCost: Double = 0.50
@@ -183,6 +179,8 @@ func howMuchDoesSandwichCost(proteinsCount: Int, fruitsAndVeggiesCount: Int, con
 }
 
 howMuchDoesSandwichCost(proteinsCount: 1, fruitsAndVeggiesCount: 3, condimentsCount: 4) // returns 13
+howMuchDoesSandwichCost(proteinsCount: 2, fruitsAndVeggiesCount: 5, condimentsCount: 10) // returns 17.5
+howMuchDoesSandwichCost(proteinsCount: 1, fruitsAndVeggiesCount: 3, condimentsCount: 2) // returns 12
 
 // == Question 5 ===============
 // You've decided to increase the price of your add-ons. The new costs are: $1.50 for each extra protein, $0.75 for fruit/veggies and $0.50 for condiments. Write a function that calculates the cost of a sandwich, reflecting this price change. The function still accepts 3 integers as arguments and returns the total cost as a double
@@ -217,6 +215,8 @@ func howMuchDoesSandwichCostWithIncrease(proteinsCount: Int, fruitsAndVeggiesCou
 }
 
 howMuchDoesSandwichCostWithIncrease(proteinsCount: 2, fruitsAndVeggiesCount: 1, condimentsCount: 0) // returns 13.5
+howMuchDoesSandwichCostWithIncrease(proteinsCount: 1, fruitsAndVeggiesCount: 3, condimentsCount: 2) // returns 12
+howMuchDoesSandwichCostWithIncrease(proteinsCount: 5, fruitsAndVeggiesCount: 5, condimentsCount: 5) // returns 21
 
 // == Bonus ====================
 // You forgot to name your sandwich shop. What’s it called? Print this in the console as a string.
