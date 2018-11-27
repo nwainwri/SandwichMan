@@ -183,7 +183,35 @@ howMuchDoesSandwichCost(proteinsCount: 1, fruitsAndVeggiesCount: 3, condimentsCo
 
 
 
+func howMuchDoesSandwichCostWithIncrease(proteinsCount: Int, fruitsAndVeggiesCount: Int, condimentsCount: Int) -> Double {
+  let kSandwichCost: Double = 12.00
 
+  let kExtraProteinCost: Double = 1.50
+  let kExtraFruitsAndVeggiesCost: Double = 0.75
+  let kExtraCondimentsCost: Double = 0.50
+  
+  var totalSandwichCost: Double = 0.00
+  var extraProteinCost: Double = 0.00
+  var extraFruitsAndVeggiesCost: Double = 0.00
+  var extraCondimentsCount: Double = 0.00
+  
+  if proteinsCount > 1 {
+    extraProteinCost = (Double(proteinsCount) - 1) * kExtraProteinCost
+  }
+  
+  if fruitsAndVeggiesCount > 3 {
+    extraFruitsAndVeggiesCost = (Double(fruitsAndVeggiesCount) - 3) * kExtraFruitsAndVeggiesCost
+  }
+  
+  if condimentsCount > 2 {
+    extraCondimentsCount = (Double(condimentsCount) - 2) * kExtraCondimentsCost
+  }
+  
+  totalSandwichCost = kSandwichCost + extraProteinCost + extraFruitsAndVeggiesCost + extraCondimentsCount
+  return totalSandwichCost
+}
+
+howMuchDoesSandwichCostWithIncrease(proteinsCount: 2, fruitsAndVeggiesCount: 1, condimentsCount: 0)
 
 // == Bonus ====================
 // You forgot to name your sandwich shop. What’s it called? Print this in the console as a string.
