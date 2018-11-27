@@ -88,21 +88,34 @@ hasAtLeastOneIngredient(chickenSandwich)
 // A sandwich can only contain ingredients on the menu; if a sandwich contains an ingredient not on the menu, it should be removed. Write a function called `validateSandwich` that accepts an array of ingredients as an argument and returns only the valid ingredients as an array
 //  i.e. An input of [ 'chicken', 'hammer', 36, 'swiss cheese' ] would return [ 'chicken' ]
 
+let firstSandwichOrder = ["chicken", "hammer", "36", "swiss cheese"]
+
 func validateSandwich(_ ingredients: [String]) -> [String] {
-  
+  var validatedIngredients:[String] = []
 
   for ingredient in ingredients {
     
-    if !proteins.contains(ingredient) {
-      //remove that item
+    if proteins.contains(ingredient) {
+      validatedIngredients.append(ingredient)
     }
     
+    if veggies.contains(ingredient) {
+      validatedIngredients.append(ingredient)
+    }
     
+    if fruits.contains(ingredient) {
+      validatedIngredients.append(ingredient)
+    }
     
+    if condiments.contains(ingredient) {
+      validatedIngredients.append(ingredient)
+    }
   }
   
-  return ["blob"]
+  return validatedIngredients
 }
+
+validateSandwich(firstSandwichOrder)
 
 
 
@@ -110,10 +123,34 @@ func validateSandwich(_ ingredients: [String]) -> [String] {
 // Write a function that calculates the number of extra ingredients in a sandwich. It accepts an array of ingredients as an argument and returns the number of extra ingredients as an integer. Name the function whatever you like.
 //  i.e. A sandwich containing ['turkey', 'lettuce', 'mayo', 'mayo', 'mayo' ] would return 1
 
+let secondSandwichOrder = ["turkey", "lettuce", "mayo", "mayo", "mayo"]
+
+func checkForExtraIngredients(_ ingredients:[String]) -> Int {
+  var hasHowManyExtraIngredients: Int = 0
+  var countedIngredients: [String: Int] = [:]
+  
+  for ingredient in ingredients {
+    countedIngredients[ingredient] = (countedIngredients[ingredient] ?? 0) + 1
+  }
+  
+  for (ingredient, amount) in countedIngredients {
+    if amount > 1 {
+      hasHowManyExtraIngredients += 1
+    }
+  }
+  return hasHowManyExtraIngredients
+}
+checkForExtraIngredients(secondSandwichOrder)
 
 // == Question 4 ===============
 // Write a function that calculates the cost of a sandwich, based on the number of ingredients it contains. The function accepts 3 integers as arguments (proteinsCount, fruitsAndVeggiesCount, and condimentsCount) and returns the total cost of the sandwich as a double rounded to 2 decimal places.
 //  i.e. An input of 1 (protein), 3 (fruits/veggies) and 4 (condiments) would return 13.00
+
+func howMuchDoesSandwichCost(proteinsCount: Int, fruitsAndVeggiesCount: Int, condimentsCount: Int) -> Double {
+  
+  return 4.00
+}
+
 
 
 // == Question 5 ===============
