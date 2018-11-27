@@ -146,16 +146,43 @@ checkForExtraIngredients(secondSandwichOrder)
 // Write a function that calculates the cost of a sandwich, based on the number of ingredients it contains. The function accepts 3 integers as arguments (proteinsCount, fruitsAndVeggiesCount, and condimentsCount) and returns the total cost of the sandwich as a double rounded to 2 decimal places.
 //  i.e. An input of 1 (protein), 3 (fruits/veggies) and 4 (condiments) would return 13.00
 
+//  * A standard sandwich will cost $12 (…you're located in Gastown)
+//  * A standard sandwich has up to 1 protein, up to 3 fruits or veggies, and up to 2 condiments
+//  * For each extra ingredient, there is an additional charge of $0.50
+
+
 func howMuchDoesSandwichCost(proteinsCount: Int, fruitsAndVeggiesCount: Int, condimentsCount: Int) -> Double {
+  let kSandwichCost: Double = 12.00
+  let kExtraIngredientCost: Double = 0.50
+  var totalSandwichCost: Double = 0.00
+  var extraProteinCost: Double = 0.00
+  var extraFruitsAndVeggiesCost: Double = 0.00
+  var extraCondimentsCount: Double = 0.00
   
-  return 4.00
+  if proteinsCount > 1 {
+    extraProteinCost = (Double(proteinsCount) - 1) * kExtraIngredientCost
+  }
+  
+  if fruitsAndVeggiesCount > 3 {
+    extraFruitsAndVeggiesCost = (Double(fruitsAndVeggiesCount) - 3) * kExtraIngredientCost
+  }
+  
+  if condimentsCount > 2 {
+    extraCondimentsCount = (Double(condimentsCount) - 2) * kExtraIngredientCost
+  }
+  
+  totalSandwichCost = kSandwichCost + extraProteinCost + extraFruitsAndVeggiesCost + extraCondimentsCount
+  return totalSandwichCost
 }
 
-
+howMuchDoesSandwichCost(proteinsCount: 1, fruitsAndVeggiesCount: 3, condimentsCount: 4)
 
 // == Question 5 ===============
 // You've decided to increase the price of your add-ons. The new costs are: $1.50 for each extra protein, $0.75 for fruit/veggies and $0.50 for condiments. Write a function that calculates the cost of a sandwich, reflecting this price change. The function still accepts 3 integers as arguments and returns the total cost as a double
 //  i.e. An input of 2 (protein) and 1 (fruits/veggies) would return 13.50
+
+
+
 
 
 // == Bonus ====================
