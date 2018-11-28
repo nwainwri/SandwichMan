@@ -15,6 +15,8 @@ let condiments = [ "mayo", "mustard", "relish", "pickles", "ketchup" ]
 // A sandwich must contain at least 1 ingredient. Write a function called `hasAtLeastOneIngredient` that accepts an array of ingredients as an argument, and returns a boolean. If one or more ingredients are present, it should return true
 //  i.e. An input of [ 'chicken', 'mustard', 'pickles'] would return true
 
+
+// required question arrays, plus two test arrays for edge cases.
 let chickenSandwich: [String] = [ "chicken", "mustard", "pickles" ]
 let emptySandwich: [String] = []
 let testSandwich: [String] = [ "high tops", "lego", "🤖" ]
@@ -77,6 +79,7 @@ func checkForCondiments(_ ingredients: [String]) -> Bool {
   return hasCondiment
 }
 
+// extra tests on the function, to ensure it will also return a false if there is nothing, or no correct ingredients.
 hasAtLeastOneIngredient(chickenSandwich) // returns true
 hasAtLeastOneIngredient(emptySandwich) // returns false
 hasAtLeastOneIngredient(testSandwich) // returns false
@@ -86,6 +89,7 @@ hasAtLeastOneIngredient(testSandwich) // returns false
 // A sandwich can only contain ingredients on the menu; if a sandwich contains an ingredient not on the menu, it should be removed. Write a function called `validateSandwich` that accepts an array of ingredients as an argument and returns only the valid ingredients as an array
 //  i.e. An input of [ 'chicken', 'hammer', 36, 'swiss cheese' ] would return [ 'chicken' ]
 
+// required question arrays, plus two test arrays for edge cases.
 let questionTwoFirstSandwichOrder = [ "chicken", "hammer", 36, "swiss cheese" ] as [Any]
 let questionTwoSecondSandwichOrder = [ "beef", "oil", 78000, 780.00, "high tops"] as [Any]
 let questionTwoThreeSandwichOrder = [ "meatballs", "basketball", "pickles", "🥶" ] as [Any]
@@ -125,6 +129,7 @@ func validateSandwich(_ ingredients: [Any]) -> [String] {
   return validatedIngredients
 }
 
+// two extra tests on the function, to ensure it's in proper order.
 validateSandwich(questionTwoFirstSandwichOrder) // returns ["chicken"]
 validateSandwich(questionTwoSecondSandwichOrder) // returns []
 validateSandwich(questionTwoThreeSandwichOrder) // returns ["meatballs", "pickles"]
@@ -133,6 +138,7 @@ validateSandwich(questionTwoThreeSandwichOrder) // returns ["meatballs", "pickle
 // Write a function that calculates the number of extra ingredients in a sandwich. It accepts an array of ingredients as an argument and returns the number of extra ingredients as an integer. Name the function whatever you like.
 //  i.e. A sandwich containing ['turkey', 'lettuce', 'mayo', 'mayo', 'mayo' ] would return 1
 
+// required question arrays, plus one test array to ensure it's working properly
 let questionThreeFirstSandwichOrder = [ "turkey", "lettuce", "mayo", "mayo", "mayo" ]
 let questionThreeSecondSandwichOrder = [ "cucumber","cucumber","cucumber", "bacon", "bacon", "bacon", "ketchup" ]
 
@@ -155,6 +161,8 @@ func checkForExtraIngredients(_ ingredients: [String]) -> Int {
   }
   return hasHowManyExtraIngredients
 }
+
+// extra test to make sure it's working correctly, and will 'count' extras if more inputted.
 checkForExtraIngredients(questionThreeFirstSandwichOrder) // returns 1
 checkForExtraIngredients(questionThreeSecondSandwichOrder) // returns 2
 
@@ -193,6 +201,7 @@ func howMuchDoesSandwichCost(proteinsCount: Int, fruitsAndVeggiesCount: Int, con
   return totalSandwichCost
 }
 
+// two extra tests on the function, hand calculated the results to make sure the math is correct.
 howMuchDoesSandwichCost(proteinsCount: 1, fruitsAndVeggiesCount: 3, condimentsCount: 4) // returns 13
 howMuchDoesSandwichCost(proteinsCount: 2, fruitsAndVeggiesCount: 5, condimentsCount: 10) // returns 17.5
 howMuchDoesSandwichCost(proteinsCount: 1, fruitsAndVeggiesCount: 3, condimentsCount: 2) // returns 12
@@ -231,6 +240,7 @@ func howMuchDoesSandwichCostWithIncrease(proteinsCount: Int, fruitsAndVeggiesCou
   return totalSandwichCost
 }
 
+// same as the previous function, extra tests performed, and hand calculation as well.
 howMuchDoesSandwichCostWithIncrease(proteinsCount: 2, fruitsAndVeggiesCount: 1, condimentsCount: 0) // returns 13.5
 howMuchDoesSandwichCostWithIncrease(proteinsCount: 1, fruitsAndVeggiesCount: 3, condimentsCount: 2) // returns 12
 howMuchDoesSandwichCostWithIncrease(proteinsCount: 5, fruitsAndVeggiesCount: 5, condimentsCount: 5) // returns 21
