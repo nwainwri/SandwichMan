@@ -22,6 +22,8 @@ let testSandwich: [String] = [ "high tops", "lego", "🤖" ]
 func hasAtLeastOneIngredient(_ ingredients: [String]) -> Bool {
   var hasOneIngredient = false
   
+  // statement will use below helper functions to check 'ingredients' array for any valid sandwich 'ingredient'
+  // once found, will set 'hasOneIngredient' to true, and return that back
   if checkForProteins(ingredients) {
     hasOneIngredient = true
   } else if checkForVeggies(ingredients) {
@@ -34,6 +36,7 @@ func hasAtLeastOneIngredient(_ ingredients: [String]) -> Bool {
   return hasOneIngredient
 }
 
+// following four functions are helpers designed to check each of the menu ingredient arrays for valid ingredients.
 func checkForProteins(_ ingredients: [String]) -> Bool {
   var hasProtein: Bool = false
   for ingredient in ingredients {
@@ -87,19 +90,22 @@ let questionTwoFirstSandwichOrder = [ "chicken", "hammer", 36, "swiss cheese" ] 
 let questionTwoSecondSandwichOrder = [ "beef", "oil", 78000, 780.00, "high tops"] as [Any]
 let questionTwoThreeSandwichOrder = [ "meatballs", "basketball", "pickles", "🥶" ] as [Any]
 
+
+// function will intake an array filled with 'Any' objects, sort thru them only for valid string entries, and return an array of [String]
 func validateSandwich(_ ingredients: [Any]) -> [String] {
   var convertedIngredients: [String] = []
+  var validatedIngredients: [String] = []
   
+  // fast enumerate thru 'ingredient' array, and sort out any valid strings
   for object in ingredients {
     if let stringIngredient = object as? String {
       convertedIngredients.append(stringIngredient)
-    } else {}
+    }
   }
-  
-  var validatedIngredients: [String] = []
 
+  // fast enumerate thru the 'convertedIngredients' array, and check each 'ingredient' to see if it's valid
+  // checked against each menu array, if it finds any that are valid, it appends it to 'validatedIngredients'
   for ingredient in convertedIngredients {
-    
     if proteins.contains(ingredient) {
       validatedIngredients.append(ingredient)
     }
@@ -116,7 +122,6 @@ func validateSandwich(_ ingredients: [Any]) -> [String] {
       validatedIngredients.append(ingredient)
     }
   }
-  
   return validatedIngredients
 }
 
@@ -131,14 +136,18 @@ validateSandwich(questionTwoThreeSandwichOrder) // returns ["meatballs", "pickle
 let questionThreeFirstSandwichOrder = [ "turkey", "lettuce", "mayo", "mayo", "mayo" ]
 let questionThreeSecondSandwichOrder = [ "cucumber","cucumber","cucumber", "bacon", "bacon", "bacon", "ketchup" ]
 
+
+// function takes in an array 'ingredients', checks to see if any are repeated/extra, and returns only an Int of how many extras there are.
 func checkForExtraIngredients(_ ingredients: [String]) -> Int {
   var hasHowManyExtraIngredients: Int = 0
   var countedIngredients: [String: Int] = [:]
   
+  // fast enumerate thru the ingredient array, putting each ingredient into 'countedIngredients' dictionary, and at the same time, counting up how many times that ingredient is repeated
   for ingredient in ingredients {
     countedIngredients[ingredient] = (countedIngredients[ingredient] ?? 0) + 1
   }
   
+  // fast enumerate thru 'countedIngredients' dictionary, if any entries have been repeated more then once, add one to 'hasHowManyExtraIngredients'
   for (_, amount) in countedIngredients {
     if amount > 1 {
       hasHowManyExtraIngredients += 1
@@ -153,6 +162,7 @@ checkForExtraIngredients(questionThreeSecondSandwichOrder) // returns 2
 // Write a function that calculates the cost of a sandwich, based on the number of ingredients it contains. The function accepts 3 integers as arguments (proteinsCount, fruitsAndVeggiesCount, and condimentsCount) and returns the total cost of the sandwich as a double rounded to 2 decimal places.
 //  i.e. An input of 1 (protein), 3 (fruits/veggies) and 4 (condiments) would return 13.00
 
+// function takes in only 3 'Int' variables, representing how much of the following menu categories; protein, fruits and vegggies, and condiments.
 func howMuchDoesSandwichCost(proteinsCount: Int, fruitsAndVeggiesCount: Int, condimentsCount: Int) -> Double {
   let kSandwichCost: Double = 12.00
   let kExtraIngredientCost: Double = 0.50
@@ -160,6 +170,9 @@ func howMuchDoesSandwichCost(proteinsCount: Int, fruitsAndVeggiesCount: Int, con
   var extraProteinCost: Double = 0.00
   var extraFruitsAndVeggiesCost: Double = 0.00
   var extraCondimentsCount: Double = 0.00
+  
+  // next three if statements take in the entered corresponding number, subtract what's included in the default sandwich cost
+  // and then multiply the remainder by 'kExtraIngredientCost'
   
   if proteinsCount > 1 {
     extraProteinCost = (Double(proteinsCount) - 1) * kExtraIngredientCost
@@ -173,6 +186,8 @@ func howMuchDoesSandwichCost(proteinsCount: Int, fruitsAndVeggiesCount: Int, con
     extraCondimentsCount = (Double(condimentsCount) - 2) * kExtraIngredientCost
   }
   
+  // final calculation before the total is returned, adds the results form the above three if statements, adds them to the base sandwich cost
+  // multiplies it by 100, then rounds that number off, before diving it by 100. So that we get the proper cash value
   totalSandwichCost = ((kSandwichCost + extraProteinCost + extraFruitsAndVeggiesCost + extraCondimentsCount) * 100).rounded() / 100
   
   return totalSandwichCost
@@ -186,6 +201,8 @@ howMuchDoesSandwichCost(proteinsCount: 1, fruitsAndVeggiesCount: 3, condimentsCo
 // You've decided to increase the price of your add-ons. The new costs are: $1.50 for each extra protein, $0.75 for fruit/veggies and $0.50 for condiments. Write a function that calculates the cost of a sandwich, reflecting this price change. The function still accepts 3 integers as arguments and returns the total cost as a double
 //  i.e. An input of 2 (protein) and 1 (fruits/veggies) would return 13.50
 
+
+// below function is the same as above function, except that each of the entered categories, now have their own seperate costs
 func howMuchDoesSandwichCostWithIncrease(proteinsCount: Int, fruitsAndVeggiesCount: Int, condimentsCount: Int) -> Double {
   let kSandwichCost: Double = 12.00
   let kExtraProteinCost: Double = 1.50
@@ -220,6 +237,9 @@ howMuchDoesSandwichCostWithIncrease(proteinsCount: 5, fruitsAndVeggiesCount: 5, 
 
 // == Bonus ====================
 // You forgot to name your sandwich shop. What’s it called? Print this in the console as a string.
+
+// prints out the shop's name to the console.
+// Name chosen for something "rhymey"
 let sandwichShopName = "Grease and Gruyere"
 func shopName(_ name: String){
   print(name)
